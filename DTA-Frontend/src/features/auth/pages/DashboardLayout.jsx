@@ -42,7 +42,7 @@ function DashboardLayout() {
           <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-1 hidden sm:block"></div>
 
           <button
-            onClick={() = className="cursor-pointer"> setDarkMode(!darkMode)}
+            onClick={() => setDarkMode(!darkMode)}
             className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all hover-lift shadow-sm"
           >
             {darkMode ? <FaSun size={16} /> : <FaMoon size={16} />}

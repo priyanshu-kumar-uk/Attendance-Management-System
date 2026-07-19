@@ -40,7 +40,7 @@ function ManagerOvertimeRequests() {
             {ot.status === "pending" && (
               <div className="flex gap-3 mt-4 md:mt-0">
                 <button
-                  onClick={() = className="cursor-pointer"> {
+                  onClick={() => {
                     const notes = prompt("Enter approval remarks (optional):");
                     if (notes !== null) onOTDecisionSubmit(ot._id, true, notes);
                   }}
@@ -49,7 +49,7 @@ function ManagerOvertimeRequests() {
                   <FaCheck /> Approve
                 </button>
                 <button
-                  onClick={() = className="cursor-pointer"> {
+                  onClick={() => {
                     const notes = prompt("Enter rejection reason:");
                     if (notes) onOTDecisionSubmit(ot._id, false, notes);
                   }}

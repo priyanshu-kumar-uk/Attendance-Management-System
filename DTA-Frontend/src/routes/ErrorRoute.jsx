@@ -10,7 +10,7 @@ const ErrorRoute = () => {
             <h1 className="text-5xl font-bold">404</h1>
             <p className="text-xl">Page not found</p>
             <button
-                onClick={() = className="cursor-pointer"> navigate('/')}
+                onClick={() => navigate('/')}
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600 transition-colors">
                 Go to Dashboard
             </button>

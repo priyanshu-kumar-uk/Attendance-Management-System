@@ -85,7 +85,7 @@ function AdminAttendanceLogs() {
                   </td>
                   <td className="py-4 px-5 text-right">
                     <button
-                      onClick={() = className="cursor-pointer"> {
+                      onClick={() => {
                         setSelectedLog(log);
                         setVerifyStatus(log.status === "pending" ? "valid" : log.status);
                         setVerifyRemarks(log.remarks || "");
@@ -123,7 +123,7 @@ function AdminAttendanceLogs() {
                 <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">{selectedLog.employee.name} <span className="mx-2">•</span> {selectedLog.date}</p>
               </div>
               <button
-                onClick={() = className="cursor-pointer"> setSelectedLog(null)}
+                onClick={() => setSelectedLog(null)}
                 className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-all hover-lift"
               >
                 ✕
@@ -165,7 +165,7 @@ function AdminAttendanceLogs() {
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
-                        onClick={() = className="cursor-pointer"> setVerifyStatus("valid")}
+                        onClick={() => setVerifyStatus("valid")}
                         className={`py-3.5 rounded-xl text-sm font-black border-2 transition-all ${verifyStatus === "valid"
                           ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border-emerald-500 shadow-md shadow-emerald-500/20"
                           : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800"
@@ -175,7 +175,7 @@ function AdminAttendanceLogs() {
                       </button>
                       <button
                         type="button"
-                        onClick={() = className="cursor-pointer"> setVerifyStatus("invalid")}
+                        onClick={() => setVerifyStatus("invalid")}
                         className={`py-3.5 rounded-xl text-sm font-black border-2 transition-all ${verifyStatus === "invalid"
                           ? "bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 border-rose-500 shadow-md shadow-rose-500/20"
                           : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800"

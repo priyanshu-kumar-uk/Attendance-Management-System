@@ -58,7 +58,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
             <div className="relative w-full aspect-video max-w-sm rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-xl ring-4 ring-rose-500/20">
               <img src={photo} className="w-full h-full object-cover" alt="Captured selfie" />
               <button
-                onClick={() = className="cursor-pointer"> setPhoto(null)}
+                onClick={() => setPhoto(null)}
                 className="absolute top-3 right-3 px-4 py-1.5 bg-rose-600 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-rose-700 transition shadow-lg hover-lift"
               >
                 Retake
@@ -127,7 +127,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
           
           {!todayLog.otRequest ? (
             <button
-              onClick={() = className="cursor-pointer"> onOpenOTModal(todayLog._id)}
+              onClick={() => onOpenOTModal(todayLog._id)}
               className="w-full py-3 premium-gradient-bg text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 glow-btn"
             >
               <FaPlusCircle size={16} /> Request Overtime

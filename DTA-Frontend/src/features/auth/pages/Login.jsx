@@ -19,7 +19,7 @@ function Login() {
       <div className="w-full flex items-center justify-center p-8 lg:p-16 relative z-10">
         <div className="absolute top-8 right-8">
           <button
-            onClick={() = className="cursor-pointer"> setDarkMode(!darkMode)}
+            onClick={() => setDarkMode(!darkMode)}
             className="p-3 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-800 transition-all hover-lift"
           >
             {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
