@@ -5,5 +5,5 @@ export const signupSchema = z.object({
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters long"),
     role: z.enum(["employee", "manager", "admin"]),
-    manager: z.string().optional().nullable(),
+    manager: z.string().optional().nullable().transform(val => val === "" ? null : val),
 });

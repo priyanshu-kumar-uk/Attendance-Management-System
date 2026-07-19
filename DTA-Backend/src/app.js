@@ -35,9 +35,11 @@ app.use(
 app.use(compression());
 
 // CORS
+const allowedOrigin = CLIENT_URL.endsWith("/") ? CLIENT_URL.slice(0, -1) : CLIENT_URL;
+
 app.use(
   cors({
-    origin: CLIENT_URL, // Allow client connection
+    origin: allowedOrigin, // Allow client connection
     credentials: true,
   })
 );
