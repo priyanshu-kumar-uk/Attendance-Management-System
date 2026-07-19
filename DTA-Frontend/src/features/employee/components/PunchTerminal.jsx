@@ -128,10 +128,11 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
 
           <button
             onClick={onPunchOut}
-            className="cursor-pointer w-full py-4 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-2xl transition-all shadow-lg shadow-rose-600/25 glow-btn flex items-center justify-center gap-2 text-lg"
+            disabled={punching}
+            className="cursor-pointer w-full py-4 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-2xl transition-all shadow-lg shadow-rose-600/25 glow-btn flex items-center justify-center gap-2 disabled:opacity-50 text-lg"
           >
             <FaSignOutAlt size={20} />
-            Punch Out Now
+            {punching ? "Acquiring Coordinates..." : "Punch Out Now"}
           </button>
         </div>
       ) : (

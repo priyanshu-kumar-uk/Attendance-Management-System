@@ -10,6 +10,10 @@ export const punchInSchema = z.object({
 
 export const punchOutSchema = z.object({
   selfie: z.string().min(1, "Punch-out selfie photo is required"),
+  location: z.object({
+    latitude: z.number({ required_error: "Latitude is required for punch-out" }),
+    longitude: z.number({ required_error: "Longitude is required for punch-out" }),
+  }),
 });
 
 export const verifyAttendanceSchema = z.object({

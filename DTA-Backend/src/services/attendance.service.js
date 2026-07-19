@@ -62,7 +62,7 @@ class AttendanceService {
   }
 
 
-  async punchOut(userId, { selfie }) {
+  async punchOut(userId, { selfie, location }) {
     const todayStr = this.getLocalDateString();
 
     // Find the attendance record for today
@@ -75,6 +75,26 @@ class AttendanceService {
     }
     if (!selfie) {
       throw new AppError(400, "Punch-out selfie is required.");
+    }
+    if (!location || location.latitude == null || location.longitude == null) {
+      throw new AppError(400, "Punch-out location is required.");
+    }
+
+    // Geofencing check (Optional based on environment config)
+    const gfLat = GEOFENCING_LAT;
+    const gfLon = GEOFENCING_LON;
+    const gfRadius = GEOFENCING_RADIUS ? parseFloat(GEOFENCING_RADIUS) : 300;
+
+    if (gfLat && gfLon) {
+      const distance = getHaversineDistance(
+        parseFloat(gfLat),
+        parseFloat(gfLon),
+        location.latitude,
+        location.longitude
+      );
+      if (distance > gfRadius) {
+        throw new AppError(400, `Geofence verification failed on punch-out. You are ${Math.round(distance)}m away from the office.`);
+      }
     }
 
     let punchOutSelfieUrl;
@@ -92,6 +112,7 @@ class AttendanceService {
     const updated = await MongoAttendanceRepository.updateAttendance(attendance._id, {
       punchOut: punchOutTime,
       punchOutSelfieUrl,
+      punchOutLocation: location,
       workingHours,
     });
 

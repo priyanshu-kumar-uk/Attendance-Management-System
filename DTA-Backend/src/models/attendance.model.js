@@ -35,6 +35,14 @@ const attendanceSchema = new mongoose.Schema(
         required: true,
       },
     },
+    punchOutLocation: {
+      latitude: {
+        type: Number,
+      },
+      longitude: {
+        type: Number,
+      },
+    },
     workingHours: {
       type: Number,
       default: 0,

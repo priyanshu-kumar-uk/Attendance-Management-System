@@ -71,15 +71,36 @@ export default function useAttendance() {
       return;
     }
 
-    try {
-      toast.loading("Punching out...", { id: "punchout" });
-      await punchOut({ selfie: photo }).unwrap();
-      toast.success("Punched out successfully!", { id: "punchout" });
-      setPhoto(null);
-      if (refetchLogs) refetchLogs();
-    } catch (err) {
-      toast.error(err?.data?.message || "Punch Out failed", { id: "punchout" });
-    }
+    setPunching(true);
+    toast.loading("Obtaining location...", { id: "gps" });
+
+    navigator.geolocation.getCurrentPosition( async (pos) => {
+        const location = {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+        };
+
+        setGps(location);
+        toast.success("Location acquired", { id: "gps" });
+
+        try {
+          toast.loading("Punching out...", { id: "punchout" });
+          await punchOut({ selfie: photo, location }).unwrap();
+          toast.success("Punched out successfully!", { id: "punchout" });
+          setPhoto(null);
+          if (refetchLogs) refetchLogs();
+        } catch (err) {
+          toast.error(err?.data?.message || "Punch Out failed", { id: "punchout" });
+        } finally {
+          setPunching(false);
+        }
+      },
+      (err) => {
+        toast.error("Geolocation access denied or timed out. Please allow GPS.", { id: "gps" });
+        setPunching(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
   };
 
 
