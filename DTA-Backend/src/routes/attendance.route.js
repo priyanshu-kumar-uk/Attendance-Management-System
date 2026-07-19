@@ -2,12 +2,12 @@ import { Router } from "express";
 import attendanceController from "../controllers/attendance.controller.js";
 import { userAuth, authorize } from "../middlewares/auth.middleware.js";
 import { validator } from "../middlewares/validate.middleware.js";
-import { punchInSchema, verifyAttendanceSchema } from "../validations/attendance.validator.js";
+import { punchInSchema, verifyAttendanceSchema, punchOutSchema } from "../validations/attendance.validator.js";
 
 const router = Router();
 
 router.post("/punch-in", userAuth, validator(punchInSchema), attendanceController.punchIn);
-router.patch("/punch-out", userAuth, attendanceController.punchOut);
+router.patch("/punch-out", userAuth, validator(punchOutSchema), attendanceController.punchOut);
 router.get("/me", userAuth, attendanceController.getMe);
 router.get("/team", userAuth, authorize("manager", "admin"), attendanceController.getTeam);
 router.get("/all", userAuth, authorize("admin"), attendanceController.getAll);

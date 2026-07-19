@@ -15,9 +15,10 @@ export const attendanceApi = apiSlice.injectEndpoints({
 
 
     punchOut: builder.mutation({
-      query: () => ({
+      query: (punchData) => ({
         url: "/attendance/punch-out",
         method: "PATCH",
+        body: punchData,
       }),
       invalidatesTags: ["Attendance", "Report"],
     }),

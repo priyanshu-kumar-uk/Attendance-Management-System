@@ -18,6 +18,9 @@ const attendanceSchema = new mongoose.Schema(
     punchOut: {
       type: Date,
     },
+    punchOutSelfieUrl: {
+      type: String,
+    },
     selfieUrl: {
       type: String,
       required: true,

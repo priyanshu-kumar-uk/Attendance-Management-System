@@ -66,10 +66,16 @@ export default function useAttendance() {
 
 
   const handlePunchOut = async (refetchLogs) => {
+    if (!photo) {
+      toast.error("Please capture your selfie first!");
+      return;
+    }
+
     try {
       toast.loading("Punching out...", { id: "punchout" });
-      await punchOut().unwrap();
+      await punchOut({ selfie: photo }).unwrap();
       toast.success("Punched out successfully!", { id: "punchout" });
+      setPhoto(null);
       if (refetchLogs) refetchLogs();
     } catch (err) {
       toast.error(err?.data?.message || "Punch Out failed", { id: "punchout" });

@@ -62,7 +62,7 @@ class AttendanceService {
   }
 
 
-  async punchOut(userId) {
+  async punchOut(userId, { selfie }) {
     const todayStr = this.getLocalDateString();
 
     // Find the attendance record for today
@@ -73,6 +73,17 @@ class AttendanceService {
     if (attendance.punchOut) {
       throw new AppError(400, "You have already punched out today.");
     }
+    if (!selfie) {
+      throw new AppError(400, "Punch-out selfie is required.");
+    }
+
+    let punchOutSelfieUrl;
+    try {
+      punchOutSelfieUrl = saveBase64Image(selfie, "attendance");
+    } catch (error) {
+      throw new AppError(400, "Failed to process punch-out image.");
+    }
+
     const punchOutTime = new Date();
     const punchInTime = new Date(attendance.punchIn);
     const diffMs = punchOutTime - punchInTime;
@@ -80,6 +91,7 @@ class AttendanceService {
 
     const updated = await MongoAttendanceRepository.updateAttendance(attendance._id, {
       punchOut: punchOutTime,
+      punchOutSelfieUrl,
       workingHours,
     });
 

@@ -10,7 +10,7 @@ class AttendanceController {
 
   punchOut = asyncHandler(async (req, res) => {
     const userId = req.user.id || req.user._id;
-    const record = await attendanceService.punchOut(userId);
+    const record = await attendanceService.punchOut(userId, req.body);
     res.success(200, "Punched out successfully.", record);
   });
 

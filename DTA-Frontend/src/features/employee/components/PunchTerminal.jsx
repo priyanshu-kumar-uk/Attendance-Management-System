@@ -89,12 +89,42 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
             </p>
           </div>
 
-          <div className="relative w-32 h-32 flex items-center justify-center">
-             <div className="absolute inset-0 bg-rose-500/20 rounded-full animate-ping"></div>
-             <div className="w-24 h-24 rounded-full premium-gradient-bg flex items-center justify-center text-white shadow-xl shadow-rose-500/40 relative z-10">
-                <FaClock className="text-4xl" />
-             </div>
-          </div>
+          {!photo ? (
+            <div className="relative w-full aspect-video max-w-sm rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 border-dashed border-slate-300 dark:border-slate-700 shadow-inner flex items-center justify-center transition-all duration-300 hover:border-rose-400">
+              {cameraActive ? (
+                <Webcam
+                  audio={false}
+                  ref={webcamRef}
+                  screenshotFormat="image/jpeg"
+                  className="w-full h-full object-cover"
+                  videoConstraints={{ facingMode: "user" }}
+                />
+              ) : (
+                <span className="text-sm font-semibold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <FaCamera /> Camera offline
+                </span>
+              )}
+              <div className="absolute bottom-4 right-4">
+                <button
+                  onClick={capture}
+                  className="cursor-pointer p-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl transition-all hover-lift shadow-lg shadow-rose-600/30"
+                  title="Capture photo"
+                >
+                  <FaCamera size={20} />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="relative w-full aspect-video max-w-sm rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-xl ring-4 ring-rose-500/20">
+              <img src={photo} className="w-full h-full object-cover" alt="Captured selfie" />
+              <button
+                onClick={() => setPhoto(null)}
+                className="absolute top-3 right-3 px-4 py-1.5 bg-rose-600 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-rose-700 transition shadow-lg hover-lift"
+              >
+                Retake
+              </button>
+            </div>
+          )}
 
           <button
             onClick={onPunchOut}

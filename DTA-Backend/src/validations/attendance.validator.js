@@ -8,6 +8,10 @@ export const punchInSchema = z.object({
   }),
 });
 
+export const punchOutSchema = z.object({
+  selfie: z.string().min(1, "Punch-out selfie photo is required"),
+});
+
 export const verifyAttendanceSchema = z.object({
   status: z.enum(["valid", "invalid"], {
     errorMap: () => ({ message: "Status must be either 'valid' or 'invalid'" }),
