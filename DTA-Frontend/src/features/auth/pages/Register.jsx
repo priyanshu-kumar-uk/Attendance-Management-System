@@ -25,7 +25,7 @@ function Register() {
       <div className="w-full flex items-center justify-center p-4 sm:p-8 relative z-10 overflow-hidden h-screen">
         <div className="absolute top-8 right-8 z-20">
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() = className="cursor-pointer"> setDarkMode(!darkMode)}
             className="p-3 rounded-2xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-800 transition-all hover-lift"
           >
             {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
@@ -122,7 +122,7 @@ function Register() {
             <button
               type="submit"
               disabled={isRegisterLoading}
-              className="w-full py-3.5 premium-gradient-bg text-white font-black text-lg rounded-xl glow-btn disabled:opacity-50 mt-2"
+              className="cursor-pointer w-full py-3.5 premium-gradient-bg text-white font-black text-lg rounded-xl glow-btn disabled:opacity-50 mt-2"
             >
               {isRegisterLoading ? "Creating Account..." : "Create Account"}
             </button>

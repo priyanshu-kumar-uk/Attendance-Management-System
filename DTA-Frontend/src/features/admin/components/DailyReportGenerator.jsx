@@ -29,7 +29,7 @@ function DailyReportGenerator({ reportDate, setReportDate, reportRes }) {
           />
           <button
             onClick={exportReport}
-            className="px-5 py-2.5 premium-gradient-bg text-white rounded-xl text-sm font-black transition-all flex items-center gap-2 glow-btn"
+            className="cursor-pointer px-5 py-2.5 premium-gradient-bg text-white rounded-xl text-sm font-black transition-all flex items-center gap-2 glow-btn"
           >
             <FaDownload /> Export CSV
           </button>

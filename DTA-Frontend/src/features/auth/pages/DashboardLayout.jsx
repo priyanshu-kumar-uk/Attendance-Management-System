@@ -42,7 +42,7 @@ function DashboardLayout() {
           <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-1 hidden sm:block"></div>
 
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() = className="cursor-pointer"> setDarkMode(!darkMode)}
             className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all hover-lift shadow-sm"
           >
             {darkMode ? <FaSun size={16} /> : <FaMoon size={16} />}
@@ -50,7 +50,7 @@ function DashboardLayout() {
 
           <button
             onClick={handleLogout}
-            className="p-2.5 rounded-2xl bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/50 shadow-sm border border-rose-100 dark:border-rose-800 transition-all hover-lift"
+            className="cursor-pointer p-2.5 rounded-2xl bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/50 shadow-sm border border-rose-100 dark:border-rose-800 transition-all hover-lift"
           >
             <FaPowerOff size={16} />
           </button>

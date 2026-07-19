@@ -47,7 +47,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
               <div className="absolute bottom-4 right-4">
                 <button
                   onClick={capture}
-                  className="p-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl transition-all hover-lift shadow-lg shadow-rose-600/30"
+                  className="cursor-pointer p-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl transition-all hover-lift shadow-lg shadow-rose-600/30"
                   title="Capture photo"
                 >
                   <FaCamera size={20} />
@@ -58,7 +58,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
             <div className="relative w-full aspect-video max-w-sm rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-xl ring-4 ring-rose-500/20">
               <img src={photo} className="w-full h-full object-cover" alt="Captured selfie" />
               <button
-                onClick={() => setPhoto(null)}
+                onClick={() = className="cursor-pointer"> setPhoto(null)}
                 className="absolute top-3 right-3 px-4 py-1.5 bg-rose-600 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-rose-700 transition shadow-lg hover-lift"
               >
                 Retake
@@ -68,7 +68,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
           <button
             onClick={onPunchIn}
             disabled={punching}
-            className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl transition-all shadow-lg shadow-emerald-600/25 glow-btn flex items-center justify-center gap-2 disabled:opacity-50 text-lg"
+            className="cursor-pointer w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl transition-all shadow-lg shadow-emerald-600/25 glow-btn flex items-center justify-center gap-2 disabled:opacity-50 text-lg"
           >
             <FaSignInAlt size={20} />
             {punching ? "Acquiring Coordinates..." : "Punch In Now"}
@@ -98,7 +98,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
 
           <button
             onClick={onPunchOut}
-            className="w-full py-4 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-2xl transition-all shadow-lg shadow-rose-600/25 glow-btn flex items-center justify-center gap-2 text-lg"
+            className="cursor-pointer w-full py-4 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-2xl transition-all shadow-lg shadow-rose-600/25 glow-btn flex items-center justify-center gap-2 text-lg"
           >
             <FaSignOutAlt size={20} />
             Punch Out Now
@@ -127,7 +127,7 @@ function PunchTerminal({ todayLog, refetchLogs, onOpenOTModal }) {
           
           {!todayLog.otRequest ? (
             <button
-              onClick={() => onOpenOTModal(todayLog._id)}
+              onClick={() = className="cursor-pointer"> onOpenOTModal(todayLog._id)}
               className="w-full py-3 premium-gradient-bg text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 glow-btn"
             >
               <FaPlusCircle size={16} /> Request Overtime

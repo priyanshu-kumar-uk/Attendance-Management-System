@@ -22,7 +22,7 @@ function OvertimeRequestModal({ attendanceId, onClose }) {
           <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">Request Overtime</h4>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-all hover-lift"
+            className="cursor-pointer p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-all hover-lift"
           >
             ✕
           </button>
@@ -59,7 +59,7 @@ function OvertimeRequestModal({ attendanceId, onClose }) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 premium-gradient-bg text-white font-black rounded-2xl glow-btn disabled:opacity-50 mt-4 text-lg"
+            className="cursor-pointer w-full py-4 premium-gradient-bg text-white font-black rounded-2xl glow-btn disabled:opacity-50 mt-4 text-lg"
           >
             {isSubmitting ? "Submitting Request..." : "Submit Request"}
           </button>
