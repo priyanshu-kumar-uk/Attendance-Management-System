@@ -25,6 +25,7 @@ const app = express();
 
 // Security
 app.disable("x-powered-by");
+app.set("trust proxy", 1); // Trust first proxy (Render, Vercel, etc.) for secure cookies
 app.use(
   helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
